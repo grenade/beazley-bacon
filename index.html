@@ -1,0 +1,70 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="beazley-bacon">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" href="./css/style.css" media="screen, print" />
+    <link rel="stylesheet" href="./css/print.css" media="print" />
+
+    <!--[if lte IE 8]>
+    <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>
+      document.createElement('ng-include');
+      document.createElement('ng-pluralize');
+      document.createElement('ng-view');
+      document.createElement('ng:include');
+      document.createElement('ng:pluralize');
+      document.createElement('ng:view');
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ng-href="#/" title=">zenviro">Beazley Bacon</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" ng-controller="navController">
+                    <!--<li ng-class="{active:isActive('bacon')}">
+                        <a ng-href="#/">Bacon</a>
+                    </li>-->
+                    <li ng-class="{active:isActive('orders')}">
+                        <a ng-href="#/orders">Orders</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!--[if lte IE 8]>
+        <div>
+            <p>I <a href="http://git.bfl.local/bacon/bacon.git.bfl.local/commit/55800b4ba64c30d7454cb7be998745c3dc4e6733">tried</a> <a href="http://docs.angularjs.org/guide/ie">really</a> <a href="http://www.paulirish.com/2011/the-history-of-the-html5-shiv/">hard</a> to make this site work in your ancient browser, but I failed. Please consider <a href="http://www.google.com/intl/en_uk/chrome/browser/">upgrading your browser</a>.</p>
+        </div>
+        <![endif]-->
+        <div ng-view></div>
+        <div>
+        </div>
+        <hr/>
+        <footer>
+            <p>&copy; Beazley Group 2014</p>
+        </footer>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.3/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.3/angular-cookies.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.3/angular-route.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

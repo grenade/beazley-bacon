@@ -1,0 +1,85 @@
+
+<form role="form" name="orderform" novalidate>
+    <div class="row">
+        <div class="form-group col-md-4" ng-class="{'has-success has-feedback': orderform.name.$valid && orderform.name.$dirty, 'has-error has-feedback': orderform.name.$invalid && orderform.name.$dirty}">
+            <label for="name" class="control-label">name</label>
+            <input type="text" class="form-control" name="name" ng-model="order.name" placeholder="your Name" ng-pattern="NAME_REGEXP" required />
+            <span class="form-control-feedback glyphicon glyphicon-ok" ng-show="!orderform.name.$error.pattern"></span>
+            <span class="form-control-feedback glyphicon glyphicon-remove" ng-show="orderform.name.$error.pattern"></span>
+            <span class="error" ng-show="orderform.name.$error.pattern">Please enter a name.</span>
+        </div>
+        <div class="form-group col-md-4" ng-class="{'has-success has-feedback': orderform.email.$valid && orderform.email.$dirty, 'has-error has-feedback': orderform.email.$invalid && orderform.email.$dirty}">
+            <label for="email" class="control-label">email</label>
+            <input type="text" class="form-control" name="email" ng-model="order.email" placeholder="your email address" ng-pattern="EMAIL_REGEXP" required />
+            <span class="form-control-feedback glyphicon glyphicon-ok" ng-show="!orderform.email.$error.pattern"></span>
+            <span class="form-control-feedback glyphicon glyphicon-remove" ng-show="orderform.email.$error.pattern"></span>
+            <span class="error" ng-show="orderform.email.$error.pattern">Please enter an @beazley.com address.</span>
+        </div>
+        <div class="form-group col-md-4" ng-class="{'has-success has-feedback': orderform.initials.$valid && orderform.initials.$dirty, 'has-error has-feedback': orderform.initials.$invalid && orderform.initials.$dirty}">
+            <label for="initials" class="control-label">initials</label>
+            <input type="text" class="form-control" name="initials" ng-model="order.initials" placeholder="your initials" ng-pattern="INITIALS_REGEXP" />
+            <span class="form-control-feedback glyphicon glyphicon-ok" ng-show="!orderform.initials.$error.pattern"></span>
+            <span class="form-control-feedback glyphicon glyphicon-remove" ng-show="orderform.initials.$error.pattern"></span>
+            <span class="error" ng-show="orderform.initials.$error.pattern">Please enter some initials.</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3">
+            <p>Bread</p>
+            <div class="radio">
+                <label>
+                    <input type="radio" value="white" ng-model="order.bread" />
+                    White
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" value="granary" ng-model="order.bread" />
+                    Granary
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="toasted" ng-model="order.toasted" />
+                    Toasted
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <p>Fillings</p>
+            <div class="checkbox" ng-repeat="filling in ['egg', 'sausage', 'bacon']">
+                <label>
+                    <input
+                        type="checkbox"
+                        name="fillings[]"
+                        value="{{filling}}"
+                        ng-checked="order.filling.indexOf(filling) > -1"
+                        ng-click="selectFilling(filling)" />
+                    {{filling}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <p>Sauce</p>
+            <div class="radio">
+                <label>
+                    <input type="radio" value="ketchup" ng-model="order.sauce" />
+                    Ketchup
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" value="brown" ng-model="order.sauce" />
+                    Brown
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="newrun" class="control-label">new run</label>
+            <input type="text" class="form-control" ng-model="order.newrun" placeholder="yyyy-mm-dd" />
+        </div>
+    </div>
+    <a href="#/orders" class="btn btn-default">Back</a>
+    <button type="submit" class="btn btn-primary" ng-click="update(order)" ng-disabled="orderform.$invalid">Save</button>
+    <button type="submit" class="btn btn-danger" ng-click="delete(order)">Delete</button>
+</form>
